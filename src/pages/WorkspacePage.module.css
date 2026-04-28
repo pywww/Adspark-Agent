@@ -1,0 +1,185 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  background: var(--bg);
+}
+
+.body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.boot {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: var(--text-secondary);
+  min-height: 240px;
+}
+
+.leftPane {
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #d4d4d8;
+  min-height: 0;
+  background: var(--chat-column-bg);
+  /* 允许底部工具栏弹层越过分割线展示，避免被右侧边界裁切 */
+  overflow: visible;
+}
+
+.splitter {
+  flex-shrink: 0;
+  width: 3px;
+  cursor: col-resize;
+  background: var(--border);
+  align-self: stretch;
+}
+
+.splitter:hover {
+  background: color-mix(in srgb, var(--primary) 35%, var(--border));
+}
+
+.chatPane {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 右侧画布列：整体纯 #fff（含主视口） */
+.canvasPane {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: #ffffff;
+}
+
+.canvasMain {
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+  position: relative;
+  cursor: grab;
+  user-select: none;
+  background: #ffffff;
+}
+
+.canvasInner {
+  width: fit-content;
+  min-width: fit-content;
+  min-height: fit-content;
+  transform-origin: 0 0;
+  will-change: transform;
+}
+
+.canvasContent {
+  width: max-content;
+  max-width: none;
+  padding: 32px 40px 40px;
+  box-sizing: border-box;
+}
+
+.canvasMainIdle {
+  cursor: grab;
+}
+
+.canvasMainDragging {
+  cursor: grabbing;
+}
+
+.generatingOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  pointer-events: none;
+}
+
+.generatingCardRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  max-width: calc(100% - 80px);
+  overflow: hidden;
+}
+
+.generatingCard {
+  width: 180px;
+  aspect-ratio: 1;
+  border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--composer-send-2) 15%, var(--border));
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--composer-fill) 90%, white) 20%,
+    color-mix(in srgb, var(--composer-send-2) 10%, var(--composer-fill)) 50%,
+    color-mix(in srgb, var(--composer-fill) 90%, white) 80%
+  );
+  background-size: 220% 100%;
+  animation: pulseDot 1.2s ease-in-out infinite;
+}
+
+.generatingText {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 6px 10px;
+}
+
+@keyframes pulseDot {
+  0% {
+    background-position: 180% 0;
+  }
+  100% {
+    background-position: -20% 0;
+  }
+}
+
+@media (max-width: 1100px) {
+  .leftPane {
+    width: min(380px, 42vw) !important;
+    min-width: min(380px, 42vw) !important;
+    max-width: min(380px, 42vw) !important;
+  }
+}
+
+.preview {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px;
+  background: #ffffff;
+  border-bottom: 1px solid #f0f0f2;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.previewBtn {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.previewBtn:hover {
+  background: var(--muted);
+}

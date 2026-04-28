@@ -1,0 +1,64 @@
+.thread {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px 16px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.userRow,
+.aiRow {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 100%;
+}
+
+.userRow {
+  align-items: flex-end;
+}
+
+.userBubble {
+  background: var(--primary);
+  color: var(--on-primary);
+  padding: 10px 13px;
+  border-radius: 14px 14px 6px 14px;
+  font-size: 14px;
+  line-height: 1.5;
+  max-width: min(92%, 520px);
+}
+
+.aiBubble {
+  background: color-mix(in srgb, var(--surface) 72%, var(--muted));
+  padding: 10px 13px;
+  border-radius: 14px 14px 14px 6px;
+  font-size: 14px;
+  line-height: 1.5;
+  max-width: min(92%, 560px);
+}
+
+.userRefs {
+  margin-top: 6px;
+  display: flex;
+  gap: 6px;
+  max-width: min(92%, 520px);
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.userRefItem {
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--primary) 25%, #e5e7eb);
+  background: color-mix(in srgb, var(--surface) 80%, var(--muted));
+}
+
+.userRefThumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}

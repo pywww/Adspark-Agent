@@ -1,0 +1,130 @@
+.stage {
+  position: relative;
+  width: 1800px;
+  height: 960px;
+}
+
+.item {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 240px;
+  touch-action: none;
+  cursor: grab;
+}
+
+.item:active {
+  cursor: grabbing;
+}
+
+.skeletonRow {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 24px 24px 32px;
+  overflow-x: auto;
+}
+
+.skeletonItem {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 240px;
+}
+
+.skeleton {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 12px;
+  background: linear-gradient(
+    90deg,
+    var(--muted) 25%,
+    var(--surface-elevated) 50%,
+    var(--muted) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.empty {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 280px;
+  color: var(--text-secondary);
+  text-align: center;
+  padding: 32px 24px 40px;
+}
+
+/* 与 .hint 同色，靠字号/字重区分主辅行 */
+.empty > p {
+  margin: 0;
+  max-width: 32ch;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1.35;
+  color: var(--text-secondary);
+}
+
+.hint {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-top: 12px;
+  max-width: 36ch;
+  line-height: 1.45;
+}
+
+.previewMask {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.previewFrame {
+  position: relative;
+  display: inline-flex;
+}
+
+.previewImage {
+  max-width: min(92vw, 1400px);
+  max-height: 88vh;
+  border-radius: 12px;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.32);
+}
+
+.previewClose {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  background: rgba(0, 0, 0, 0.48);
+  color: #fff;
+  border-radius: 10px;
+  padding: 6px 12px;
+  font-size: 13px;
+  cursor: pointer;
+  z-index: 2;
+  pointer-events: auto;
+  min-width: 72px;
+  min-height: 34px;
+}

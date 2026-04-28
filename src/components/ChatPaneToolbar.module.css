@@ -1,0 +1,74 @@
+.bar {
+  flex-shrink: 0;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border);
+  background: var(--chat-column-bg);
+}
+
+.leftCluster {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rightCluster {
+  position: relative;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.iconBtn {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background-color 0.18s ease,
+    color 0.18s ease,
+    transform 0.18s ease;
+}
+
+/* 悬停：图标背后出现柔和圆形底（对齐参考图） */
+.iconBtn:hover {
+  background: color-mix(in srgb, var(--text) 9%, transparent);
+  color: var(--text);
+}
+
+.iconBtn:active {
+  transform: scale(0.94);
+}
+
+.iconBtn:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--primary) 55%, transparent);
+  outline-offset: 2px;
+}
+
+.iconBtnOn {
+  background: color-mix(in srgb, var(--primary) 12%, var(--surface));
+  color: var(--composer-send-2);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--composer-accent) 28%, transparent);
+}
+
+.iconBtnOn:hover {
+  background: color-mix(in srgb, var(--primary) 16%, var(--surface));
+}
+
+.ico {
+  width: 20px;
+  height: 20px;
+}

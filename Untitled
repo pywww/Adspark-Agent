@@ -1,0 +1,1 @@
+Copy-Item ".\backend copy\.env" ".\backend\.env" -Force

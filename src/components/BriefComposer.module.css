@@ -1,0 +1,233 @@
+/* 整框为纯白卡（--composer-surface），略浮于 --chat-column-bg 之上 */
+
+/* 不可对 shell 使用 overflow:hidden：向上弹出的 popover 会高于输入框上沿，被裁成「少一截」 */
+.shell {
+  margin: 12px 14px 14px;
+  padding: 0;
+  border-radius: 20px;
+  border: 1px solid var(--composer-border);
+  background: var(--composer-surface);
+  /* 主对话区：浅紫漫射晕（避免中性灰大底影的「发实」感） */
+  box-shadow:
+    0 1px 0 color-mix(in srgb, var(--composer-accent) 5%, transparent),
+    0 10px 32px color-mix(in srgb, var(--composer-accent) 5%, transparent),
+    0 24px 52px color-mix(in srgb, var(--primary) 4%, transparent);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+  overflow: visible;
+}
+
+.inputBlock {
+  padding: 14px 16px 10px;
+  background: var(--composer-surface);
+  border-radius: 20px 20px 0 0;
+}
+
+.inputBlockDropping {
+  background: color-mix(in srgb, var(--composer-fill) 42%, var(--composer-surface));
+}
+
+.refStrip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 0 0 10px;
+}
+
+.refItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 220px;
+  padding: 3px 7px 3px 3px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--composer-accent) 24%, var(--border));
+  background: color-mix(in srgb, var(--composer-fill) 55%, var(--surface));
+}
+
+.refThumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  object-fit: cover;
+}
+
+.refName {
+  font-size: 11px;
+  color: var(--composer-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.refRemove {
+  border: none;
+  background: transparent;
+  color: var(--composer-text);
+  cursor: pointer;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.refineTarget {
+  display: inline-block;
+  margin: 0 0 10px;
+  line-height: 0;
+}
+
+.refineThumb {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  object-fit: cover;
+  display: block;
+}
+
+.refineClear {
+  position: relative;
+  border: 1px solid color-mix(in srgb, var(--composer-accent) 30%, var(--border));
+  background: color-mix(in srgb, var(--composer-fill) 70%, var(--surface));
+  border-radius: 11px;
+  padding: 2px;
+  cursor: pointer;
+  line-height: 0;
+}
+
+.refineClearIcon {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--text) 86%, #ffffff);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.textarea {
+  width: 100%;
+  box-sizing: border-box;
+  resize: none;
+  border: none;
+  padding: 4px 2px 6px;
+  font-size: 15px;
+  line-height: 1.5;
+  font-weight: 500;
+  font-family: inherit;
+  color: var(--composer-text);
+  background: transparent;
+  min-height: 72px;
+}
+
+.textarea::placeholder {
+  color: var(--composer-placeholder);
+}
+
+.textarea:focus {
+  outline: none;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 10px 12px 12px;
+  background: var(--composer-surface);
+  border-top: 1px solid color-mix(in srgb, var(--composer-text) 6%, var(--composer-surface));
+  border-radius: 0 0 20px 20px;
+}
+
+.toolbarLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.toolbarRight {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.modelWrap {
+  min-width: 0;
+}
+
+.modelSelect {
+  max-width: 180px;
+  padding: 6px 26px 6px 10px;
+  border-radius: 6px;
+  border: 1px solid color-mix(in srgb, var(--composer-text) 12%, #e5e7eb);
+  background-color: var(--surface);
+  font-size: 12px;
+  font-family: inherit;
+  color: var(--composer-text);
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%233d424d' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+}
+
+.modelSelect:hover {
+  border-color: color-mix(in srgb, var(--composer-accent) 35%, #e5e7eb);
+}
+
+/* 发送：紫竖向渐变 + 主色细描边 + 白图标（对齐图二麦克风主操作） */
+.sendBtn {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid color-mix(in srgb, var(--composer-accent) 55%, #c4b5fc);
+  border-radius: 50%;
+  background: linear-gradient(180deg, var(--composer-send-1) 0%, var(--composer-send-2) 100%);
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--composer-send-2) 25%, transparent);
+  transition:
+    filter 0.2s var(--ease-out-strong),
+    transform 0.2s var(--ease-out-strong),
+    box-shadow 0.2s var(--ease-out-strong);
+}
+
+.sendBtn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.sendBtn:hover {
+  filter: brightness(1.05);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 20px color-mix(in srgb, var(--composer-send-2) 32%, transparent);
+}
+
+.sendBtn:active {
+  transform: translateY(0) scale(0.96);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

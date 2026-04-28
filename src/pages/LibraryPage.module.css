@@ -1,0 +1,816 @@
+/* 即梦式资产库：浅灰画布 + 双行顶栏 + 圆角卡片 + 缩略图 CTR 胶囊 */
+
+/* 与顶栏下主区一致：纯白底 + 可滚动占满出口高度 */
+.jimengMain {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 8px 20px 40px;
+  background: var(--surface);
+  min-height: 0;
+  flex: 1;
+  overflow: auto;
+  box-sizing: border-box;
+}
+
+.demoRibbon {
+  margin-bottom: 12px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--primary) 10%, var(--surface));
+  border: 1px solid color-mix(in srgb, var(--primary) 22%, var(--border));
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.remoteHint {
+  margin-bottom: 12px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid color-mix(in srgb, var(--danger) 25%, var(--border));
+  background: color-mix(in srgb, var(--danger) 8%, var(--surface));
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.jimengHeader {
+  margin-bottom: 8px;
+}
+
+.jimengTitle {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 1.2;
+  color: var(--text-emphasis);
+}
+
+.jimengSub {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: var(--text-tertiary);
+}
+
+/* 主 Tab：即梦式底边高亮 */
+.primaryTabRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 8px;
+  border-bottom: 1px solid var(--border);
+  margin: 12px 0 0;
+  padding: 0;
+}
+
+.primaryTab,
+.primaryTabOn,
+.primaryTabSoon {
+  position: relative;
+  padding: 14px 16px 12px;
+  margin: 0;
+  border: none;
+  background: transparent;
+  font: inherit;
+  font-size: 15px;
+  cursor: pointer;
+  color: var(--text-tertiary);
+}
+
+.primaryTabSoon {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.primaryTabOn {
+  color: var(--text-emphasis);
+  font-weight: 700;
+}
+
+.primaryTabOn::after {
+  content: '';
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: -1px;
+  height: 2px;
+  background: var(--cta);
+  border-radius: 2px 2px 0 0;
+}
+
+/* 子筛选 + 工具条 */
+.subToolRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px 0 10px;
+}
+
+.subTabs {
+  display: inline-flex;
+  gap: 20px;
+}
+
+.subTab,
+.subTabOn {
+  padding: 0 0 2px;
+  border: none;
+  background: none;
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+  color: var(--text-tertiary);
+}
+
+.subTabOn {
+  color: var(--text-emphasis);
+  font-weight: 600;
+}
+
+.toolCluster {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.searchWrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  height: 36px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  min-width: 200px;
+}
+
+.searchIcon {
+  font-size: 16px;
+  color: var(--text-tertiary);
+  line-height: 1;
+  user-select: none;
+}
+
+.searchInput {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  font: inherit;
+  font-size: 13px;
+  outline: none;
+}
+
+.toolBtn {
+  height: 36px;
+  padding: 0 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  font: inherit;
+  font-size: 13px;
+  color: var(--text-secondary);
+  cursor: not-allowed;
+  opacity: 0.75;
+}
+
+.viewSeg {
+  display: inline-flex;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.viewSegBtn,
+.viewSegOn {
+  padding: 8px 12px;
+  border: none;
+  background: transparent;
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  color: var(--text-secondary);
+}
+
+.viewSegOn {
+  background: color-mix(in srgb, var(--primary) 8%, var(--surface));
+  font-weight: 600;
+  color: var(--text-emphasis);
+}
+
+.thresholdHint {
+  margin: 0 0 18px;
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+
+/* 详情 */
+.detail {
+  display: grid;
+  grid-template-columns: minmax(200px, 360px) 1fr;
+  gap: 24px;
+  padding: 20px;
+  margin-bottom: 24px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+  align-items: start;
+  box-shadow: var(--shadow);
+}
+
+.demoDetailNote {
+  grid-column: 1 / -1;
+  margin: 0 0 8px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: var(--muted);
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+@media (max-width: 800px) {
+  .detail {
+    grid-template-columns: 1fr;
+  }
+}
+
+.detailImg img {
+  width: 100%;
+  border-radius: 12px;
+  display: block;
+  background: var(--muted);
+}
+
+.detailBody {
+  min-width: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.detailHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.close {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface-elevated);
+  font-size: 13px;
+  cursor: pointer;
+  font: inherit;
+}
+
+.sectionTitle {
+  margin: 0 0 6px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.sectionTitle:first-of-type {
+  margin-top: 0;
+}
+
+.sectionHint {
+  margin: 0 0 8px;
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+
+.metricsRow {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.metricCard {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface-elevated);
+  padding: 10px 12px;
+  display: grid;
+  gap: 4px;
+}
+
+.metricLabel {
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+
+.metricValue {
+  font-size: 14px;
+  color: var(--text-emphasis);
+  line-height: 1.35;
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: auto auto;
+  gap: 12px;
+  align-items: stretch;
+}
+
+.infoPanel {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  padding: 12px 14px;
+  display: grid;
+  gap: 10px;
+  height: 100%;
+}
+
+.deliveryPanel {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.strategyPanel {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.materialPanel {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+
+.kvGrid {
+  margin: 0;
+  display: grid;
+  grid-template-columns: 118px 1fr;
+  gap: 8px 10px;
+}
+
+.kvGrid dt {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  font-weight: 600;
+}
+
+.kvGrid dd {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--text-secondary);
+  word-break: break-word;
+}
+
+.longTextGroup {
+  display: grid;
+  gap: 4px;
+}
+
+.longTextTitle {
+  margin: 0;
+  font-size: 12px;
+  color: var(--text-tertiary);
+  font-weight: 600;
+}
+
+.longTextValue {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  max-height: none;
+  overflow: visible;
+  padding-right: 0;
+}
+
+.dl {
+  margin: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.dl dt {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  font-weight: 600;
+}
+
+.dl dd {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+.ctrMuted {
+  color: var(--text-tertiary);
+}
+
+.formGrid {
+  display: grid;
+  gap: 14px;
+  max-width: none;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.field,
+.fieldFull {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fieldFull {
+  grid-column: 1 / -1;
+}
+
+.fieldLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-tertiary);
+}
+
+.input,
+.textarea {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface-elevated);
+  font: inherit;
+  font-size: 14px;
+}
+
+.input:disabled,
+.textarea:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 72px;
+}
+
+.checkRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  grid-column: 1 / -1;
+}
+
+.saveBiz {
+  justify-self: start;
+  padding: 10px 18px;
+  border-radius: 10px;
+  border: none;
+  background: var(--cta);
+  color: var(--on-cta);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font: inherit;
+  transition: background-color 0.15s ease;
+  grid-column: 1 / -1;
+}
+
+.saveBiz:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.backTask {
+  display: inline-block;
+  margin-top: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--composer-send-2);
+}
+
+.backTaskMuted {
+  margin: 8px 0 0;
+  font-size: 14px;
+  color: var(--text-tertiary);
+}
+
+@media (max-width: 980px) {
+  .metricsRow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .infoGrid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+
+  .deliveryPanel,
+  .strategyPanel,
+  .materialPanel {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 按日分组 */
+.dayGroups {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.daySection {
+  margin: 0;
+}
+
+.dayHeading {
+  margin: 0 0 16px;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-emphasis);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(168px, 1fr));
+  gap: 12px;
+}
+
+.card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--surface);
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+  position: relative;
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--text) 5%, transparent);
+  transition:
+    box-shadow 0.2s var(--ease-out-strong),
+    transform 0.2s var(--ease-out-strong);
+}
+
+.card:hover {
+  box-shadow: 0 10px 28px color-mix(in srgb, var(--text) 8%, transparent);
+  transform: translateY(-1px);
+}
+
+/* 高表现：整卡内描边强调，避免左侧粗色条（impeccable / CLI 反模式） */
+.cardHighPerforming {
+  outline: 2px solid color-mix(in srgb, var(--primary) 50%, transparent);
+  outline-offset: -1px;
+}
+
+.cardOn {
+  outline: 2px solid var(--primary);
+  outline-offset: 1px;
+}
+
+.thumbWrap {
+  position: relative;
+  background: color-mix(in srgb, var(--primary) 7%, var(--muted));
+}
+
+/* 即梦式：左下 CTR 胶囊 */
+.ctrPill {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 2;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--on-cta);
+  background: rgba(0, 0, 0, 0.68);
+  backdrop-filter: blur(4px);
+  line-height: 1.3;
+  pointer-events: none;
+}
+
+/* 高表现：白底标签 + 琥珀点（与下方冷灰数据脚区分） */
+.highBadge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 10px 5px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--text);
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(10px);
+  line-height: 1.2;
+}
+
+.highBadgeDot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: linear-gradient(145deg, color-mix(in srgb, var(--primary) 55%, #a898f2) 0%, var(--primary) 100%);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+}
+
+.img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: cover;
+  display: block;
+  vertical-align: middle;
+}
+
+/* 数据脚：图下方「信息区」，固定冷灰底，与高表现叠图标签区分 */
+/* 与参考一致：图下信息区极淡薰衣草底 */
+.dataFoot {
+  padding: 10px 10px 12px;
+  font-size: 11px;
+  background: var(--composer-fill);
+  border-top: 1px solid color-mix(in srgb, var(--composer-send-2) 12%, var(--border));
+}
+
+.dataFootRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+
+.dataFootLabel {
+  color: var(--text-tertiary);
+  flex-shrink: 0;
+}
+
+.dataFootValue {
+  font-weight: 600;
+  text-align: right;
+  font-size: 11px;
+}
+
+.dataFootMuted {
+  color: var(--text-tertiary);
+  margin-top: 5px;
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.mid {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.3;
+  color: var(--text-emphasis);
+}
+
+.tableWrap {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: auto;
+  background: var(--surface);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.table th,
+.table td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+
+.table th {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  background: var(--muted);
+  white-space: nowrap;
+}
+
+.table tr:last-child td {
+  border-bottom: none;
+}
+
+.trOn {
+  background: color-mix(in srgb, var(--primary) 8%, transparent);
+}
+
+.trHigh {
+  background: color-mix(in srgb, var(--primary) 7%, transparent);
+}
+
+.thumbBtn {
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.thumb {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  display: block;
+}
+
+.cellLink {
+  border: none;
+  background: none;
+  padding: 0;
+  font: inherit;
+  color: var(--composer-send-2);
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.nowrap {
+  white-space: nowrap;
+  font-size: 13px;
+}
+
+.ctrCol {
+  color: var(--text-tertiary);
+}
+
+.empty {
+  padding: 56px 24px;
+  text-align: center;
+  color: var(--text-secondary);
+  border: 1px dashed var(--border);
+  border-radius: 16px;
+  background: var(--surface);
+}
+
+.emptyTitle {
+  margin: 0 0 8px;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-emphasis);
+}
+
+.emptyDesc {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text-tertiary);
+}
+
+.pagination {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.pageBtn {
+  min-width: 82px;
+  height: 34px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.pageBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pageMeta {
+  font-size: 13px;
+  color: var(--text-secondary);
+}

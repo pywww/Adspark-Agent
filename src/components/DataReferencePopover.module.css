@@ -1,0 +1,210 @@
+.wrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border-radius: 8px;
+  border: 1px solid color-mix(in srgb, var(--composer-text) 10%, #e5e7eb);
+  background: var(--surface);
+  color: var(--composer-icon-muted);
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease,
+    background-color 0.15s ease;
+}
+
+.trigger:hover {
+  border-color: color-mix(in srgb, var(--composer-accent) 28%, #e5e7eb);
+  color: var(--composer-text);
+  background: color-mix(in srgb, var(--composer-fill) 40%, var(--surface));
+}
+
+/* 图二 Deeper / 高亮态：淡紫底 + 主色描边 */
+.triggerOn {
+  border-color: color-mix(in srgb, var(--composer-accent) 55%, #e5e7eb);
+  color: var(--composer-accent);
+  background: var(--composer-fill);
+}
+
+.ico {
+  width: 15px;
+  height: 15px;
+}
+
+.card {
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 0;
+  width: min(280px, 78vw);
+  min-height: 250px;
+  overflow: hidden;
+  padding: 12px 12px 16px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  z-index: 86;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.closeBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition:
+    color 0.15s ease,
+    transform 0.15s ease;
+}
+
+.closeBtn::before {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--muted) 72%, var(--surface));
+  opacity: 0;
+  transform: scale(0.72);
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease;
+}
+
+.closeBtn:hover {
+  color: var(--text);
+  transform: scale(1.02);
+}
+
+.closeBtn:hover::before {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.closeBtn svg {
+  position: relative;
+  z-index: 1;
+  width: 14px;
+  height: 14px;
+}
+
+.desc {
+  margin: 0 0 10px;
+  font-size: 11px;
+  line-height: 1.45;
+  color: var(--text-secondary);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 600;
+  color: color-mix(in srgb, var(--text) 86%, var(--text-secondary));
+}
+
+.sectionLabel {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text);
+  margin: 2px 0 6px;
+}
+
+.rangeGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.rangeBtn,
+.rangeOn {
+  min-height: 36px;
+  padding: 6px 8px;
+  border-radius: 9px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  font-size: 11px;
+  cursor: pointer;
+  color: var(--text-secondary);
+}
+
+.rangeBtn:hover:not(:disabled) {
+  border-color: color-mix(in srgb, var(--text) 20%, var(--border));
+}
+
+.rangeBtn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.rangeOn {
+  border-color: var(--primary);
+  background: color-mix(in srgb, var(--primary) 8%, var(--surface));
+  color: var(--text);
+  font-weight: 600;
+}
+
+.switch {
+  width: 40px;
+  height: 24px;
+  padding: 2px;
+  border-radius: 999px;
+  border: none;
+  background: var(--border);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  transition: background 0.2s ease;
+  flex-shrink: 0;
+}
+
+.switchOn {
+  background: color-mix(in srgb, var(--primary) 75%, var(--border));
+  justify-content: flex-end;
+}
+
+.knob {
+  display: block;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--surface);
+  box-shadow: 0 1px 3px color-mix(in srgb, var(--text) 12%, transparent);
+  flex-shrink: 0;
+}

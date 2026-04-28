@@ -1,0 +1,121 @@
+:root {
+  /* 黑紫 SaaS；正文与参考界面一致拉对比：主标题/强文案用近黑，次级为中灰 */
+  --text: oklch(34% 0.04 290);
+  --text-emphasis: #0f0f0f;
+  /* 次级/弱文案与图标主色：略加深以提升与底对比 */
+  --text-secondary: oklch(40% 0.03 288);
+  --text-tertiary: oklch(52% 0.024 290);
+
+  --bg: oklch(97.5% 0.012 290);
+  --surface: #ffffff;
+  --surface-elevated: oklch(99.3% 0.006 290);
+  --muted: oklch(95.8% 0.018 288);
+  --border: #e1e1e6;
+
+  --primary: #c4b8fc;
+  --on-primary: #2c2540;
+  --brand: var(--primary);
+
+  --cta: #0f0f0f;
+  --on-cta: #ffffff;
+
+  /* 对话输入区：纯白卡，与左侧对话栏（略灰底）形成明显明度差 */
+  --composer-surface: #ffffff;
+  --composer-accent: #a18cf5;
+  --composer-fill: #f5f3ff;
+  --composer-text: #111827;
+  --composer-placeholder: #909399;
+  --composer-border: #d8dce5;
+  /* 侧栏与纯白主区拉开：参考约 #F7F7F7 */
+  --chat-column-bg: #f7f7f7;
+  --composer-icon-muted: #3d424d;
+  --composer-send-1: #c4b5fc;
+  --composer-send-2: #9678f1;
+
+  /* 语义色保持独立，不与品牌紫混用 */
+  --danger: oklch(58% 0.16 25);
+  --success: oklch(58% 0.12 150);
+  --link: var(--composer-accent);
+  --ring-focus: color-mix(in srgb, var(--composer-accent) 52%, transparent);
+
+  --user-bubble: var(--primary);
+  --shadow: 0 12px 32px color-mix(
+    in srgb,
+    var(--primary) 8%,
+    color-mix(in srgb, var(--text) 5%, transparent)
+  );
+  /* bolder：交互用“收束”型缓出，避免橡皮筋感 */
+  --ease-out-strong: cubic-bezier(0.16, 1, 0.3, 1);
+  /* 单点抬升：中性分层阴影，非通用人机紫蓝渐变 */
+  --shadow-lift:
+    0 1px 0 color-mix(in srgb, var(--text) 5%, transparent),
+    0 14px 44px color-mix(in srgb, var(--text) 7%, transparent);
+
+  font-family: system-ui, 'Segoe UI', Roboto, 'PingFang SC', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--bg);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+#root {
+  width: 100%;
+  margin: 0;
+  text-align: initial;
+  border: none;
+  display: flex;
+  flex-direction: column;
+}
+
+h1,
+h2 {
+  letter-spacing: -0.03em;
+}
+
+h1 {
+  color: var(--text-emphasis);
+  font-weight: 700;
+}
+
+h2 {
+  color: var(--text);
+}
+
+/* 策略性染色（colorize）：仍属同一色相 family，不引入新主色 */
+a {
+  color: var(--link);
+  text-underline-offset: 2px;
+}
+
+a:hover {
+  color: var(--composer-send-2);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--primary) 32%, transparent);
+  color: var(--text);
+}
+
+/* 默认键盘焦点环：与品牌紫一致；组件内若自定义 :focus-visible 可覆盖 */
+:focus-visible {
+  outline: 2px solid var(--ring-focus);
+  outline-offset: 2px;
+}

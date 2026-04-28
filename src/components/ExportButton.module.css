@@ -1,0 +1,26 @@
+/* 始终主操作样式（纯黑底 + 白字）；无选中时点击仍出提示，不改为灰态 */
+.btn {
+  min-height: 36px;
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--cta);
+  background: var(--cta);
+  color: var(--on-cta);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 1px 3px color-mix(in srgb, var(--cta) 32%, transparent);
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn:hover {
+  background: color-mix(in srgb, var(--cta) 88%, #ffffff);
+  border-color: color-mix(in srgb, var(--cta) 88%, #ffffff);
+  box-shadow: 0 2px 8px color-mix(in srgb, var(--cta) 24%, transparent);
+}
+
+.btn:active {
+  background: color-mix(in srgb, var(--cta) 82%, #ffffff);
+  border-color: color-mix(in srgb, var(--cta) 82%, #ffffff);
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--cta) 28%, transparent);
+}

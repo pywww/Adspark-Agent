@@ -1,0 +1,41 @@
+[
+  {
+    "candidate_id": "ff9cb643-de66-4a9b-80d8-1aa029477762",
+    "task_id": "task-001",
+    "run_id": "63c9c146-0bfe-47a5-ba61-7bcf61ddadf8",
+    "image_url": "https://picsum.photos/seed/420430522/768/768",
+    "final_prompt": "refined prompt based on: ????,?????,?????",
+    "visual_dna": "微调后保持主体风格，强化用户修改点",
+    "seed": "420430522",
+    "generation_mode": "refine",
+    "parent_candidate_id": null,
+    "parent_material_id": null,
+    "refine_intent": "????,?????,?????",
+    "status": "approved",
+    "created_at": "2026-04-22T17:12:12.153Z",
+    "prompt_meta": {
+      "history_prompt_raw_len": 63,
+      "history_prompt_clean_len": 63
+    },
+    "material_id": "M-1776878017420-894"
+  },
+  {
+    "candidate_id": "0ea17960-de9b-45ae-a3a0-287f35282ce5",
+    "task_id": "task-001",
+    "run_id": "c62cde5a-3b74-4ef7-b059-bf8caa740d8f",
+    "image_url": "https://picsum.photos/seed/912218135/768/768",
+    "final_prompt": "refined prompt based on: ????,?????,?????",
+    "visual_dna": "微调后保持主体风格，强化用户修改点",
+    "seed": "912218135",
+    "generation_mode": "refine",
+    "parent_candidate_id": null,
+    "parent_material_id": null,
+    "refine_intent": "????,?????,?????",
+    "status": "pending_review",
+    "created_at": "2026-04-22T17:11:18.814Z",
+    "prompt_meta": {
+      "history_prompt_raw_len": 63,
+      "history_prompt_clean_len": 63
+    }
+  }
+]
